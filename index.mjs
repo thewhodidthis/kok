@@ -1,8 +1,9 @@
 // Helps create assertions
 const assert = (jack = (() => {}), name = jack.name, operator = name) => {
   const reassert = (...args) => {
+    const marker = Math.max(jack.length - 1, 0)
+    const wanted = args[marker]
     const actual = [...args].shift()
-    const wanted = args[Math.max(jack.length - 1, 0)]
 
     // In case of simply evaluating "truthiness"
     const result = typeof jack === 'function' ? jack(...args) : !!jack
