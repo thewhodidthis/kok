@@ -1,4 +1,4 @@
-import assert from './index.mjs'
+import { assert } from './index.mjs'
 
 const { equal, notEqual } = assert
 
