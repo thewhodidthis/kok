@@ -1,19 +1,19 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 // Helps create assertions
-const assert = (jack = (() => {}), name = jack.name, operator = name) => {
+const verify = (jack = v => v, name = jack && jack.name, expected, operator = 'is') => {
   const reassert = (...args) => {
     const marker = Math.max(jack.length - 1, 0);
-    const wanted = args[marker];
-    const actual = [...args].shift();
-
-    // In case of simply evaluating "truthiness"
-    const result = typeof jack === 'function' ? jack(...args) : !!jack;
+    const actual = args[marker];
+    const wanted = expected || (marker > 0 ? args[0] : expected);
+    const result = jack(...args);
 
     // Cook up own exception
     if (!result) {
       const { stack } = Error(name);
-      const exception = { operator, expected: wanted, actual, stack, toString: () => name };
+      const exception = { actual, expected: wanted, operator, stack, toString: () => name };
 
       throw exception
     }
@@ -21,10 +21,11 @@ const assert = (jack = (() => {}), name = jack.name, operator = name) => {
     return result
   };
 
-  // Make beautiful and preserve these
+  // Make beautiful, preserve name and arity
   Object.defineProperties(reassert, {
     name: {
       value: name,
+      // ES2015 upwards
       configurable: true
     },
     length: {
@@ -37,17 +38,19 @@ const assert = (jack = (() => {}), name = jack.name, operator = name) => {
 };
 
 // Ready made assertions that cover most of my needs
-/* eslint no-unused-vars: 1 */
-const eq = (a, b, msg) => Object.is(a, b);
-const notEq = (a, b, msg) => !eq(a, b);
+const eq = (a, b) => Object.is(a, b);
+const notEq = (a, b) => !eq(a, b);
 
-assert.equal = assert(eq, 'same');
-assert.notEqual = assert(notEq, 'different');
+const ok = a => !!a;
+const notOk = a => !a;
 
-const ok = (x, msg) => assert(x);
-const notOk = (x, msg) => !ok(x);
+const assert = verify();
 
-assert.ok = assert(ok, 'truthy');
-assert.notOk = assert(notOk, 'falsy');
+assert.ok = verify(ok, 'truthy', true, '!!');
+assert.notOk = verify(notOk, 'falsy', false, '!');
 
-module.exports = assert;
+assert.equal = verify(eq, 'same');
+assert.notEqual = verify(notEq, 'different');
+
+exports.verify = verify;
+exports.assert = assert;
