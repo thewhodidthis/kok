@@ -3,8 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 // Helps create assertions
-const verify = (jack = v => v, name = jack && jack.name, expected, operator = 'is') => {
-  const reassert = (...args) => {
+const reassert = (jack = v => v, name = jack && jack.name, expected, operator = 'is') => {
+  const verify = (...args) => {
     const marker = Math.max(jack.length - 1, 0);
     const actual = args[marker];
     const wanted = expected || (marker > 0 ? args[0] : expected);
@@ -12,8 +12,8 @@ const verify = (jack = v => v, name = jack && jack.name, expected, operator = 'i
 
     // Cook up own exception
     if (!result) {
-      const { stack } = Error(name);
-      const exception = { actual, expected: wanted, operator, stack, toString: () => name };
+      const { message, stack } = Error(name);
+      const exception = { actual, message, expected: wanted, operator, stack, toString: () => name };
 
       throw exception
     }
@@ -21,36 +21,35 @@ const verify = (jack = v => v, name = jack && jack.name, expected, operator = 'i
     return result
   };
 
-  // Make beautiful, preserve name and arity
-  Object.defineProperties(reassert, {
+  // Preserve name and arity
+  Object.defineProperties(verify, {
     name: {
       value: name,
       // ES2015 upwards
       configurable: true
     },
     length: {
-      value: jack.length,
+      value: jack && jack.length,
       configurable: true
     }
   });
 
-  return reassert
+  return verify
 };
 
-// Ready made assertions that cover most of my needs
-const eq = (a, b) => Object.is(a, b);
-const notEq = (a, b) => !eq(a, b);
+const assert = reassert();
 
 const ok = a => !!a;
 const notOk = a => !a;
 
-const assert = verify();
+assert.ok = reassert(ok, 'truthy', true, '!!');
+assert.notOk = reassert(notOk, 'falsy', false, '!');
 
-assert.ok = verify(ok, 'truthy', true, '!!');
-assert.notOk = verify(notOk, 'falsy', false, '!');
+const eq = (a, b) => Object.is(a, b);
+const notEq = (a, b) => !eq(a, b);
 
-assert.equal = verify(eq, 'same');
-assert.notEqual = verify(notEq, 'different');
+assert.equal = reassert(eq, 'same');
+assert.notEqual = reassert(notEq, 'different');
 
-exports.verify = verify;
 exports.assert = assert;
+exports.reassert = reassert;
