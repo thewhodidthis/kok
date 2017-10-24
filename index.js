@@ -3,7 +3,10 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 // Helps create assertions
-const reassert = (jack = v => v, name = jack && jack.name, expected, operator = 'is') => {
+const reassert = (jack = v => v, name, expected, operator = 'is') => {
+  const ticket = name || (jack && jack.name);
+  const length = jack && jack.length;
+
   const verify = (...args) => {
     const marker = Math.max(jack.length - 1, 0);
     const actual = args[marker];
@@ -12,8 +15,8 @@ const reassert = (jack = v => v, name = jack && jack.name, expected, operator = 
 
     // Cook up own exception
     if (!result) {
-      const { message, stack } = Error(name);
-      const exception = { actual, message, expected: wanted, operator, stack, toString: () => name };
+      const { message, stack } = Error(ticket);
+      const exception = { actual, message, expected: wanted, operator, stack, toString: () => ticket };
 
       throw exception
     }
@@ -24,12 +27,12 @@ const reassert = (jack = v => v, name = jack && jack.name, expected, operator = 
   // Preserve name and arity
   Object.defineProperties(verify, {
     name: {
-      value: name,
+      value: ticket,
       // ES2015 upwards
       configurable: true
     },
     length: {
-      value: jack && jack.length,
+      value: length,
       configurable: true
     }
   });
