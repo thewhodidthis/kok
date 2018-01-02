@@ -4,17 +4,18 @@ const reassert = (jack = v => v, name, expected, operator = 'is') => {
   const length = jack && jack.length
 
   const verify = (...args) => {
+    const actual = args[0]
     const marker = Math.max(jack.length - 1, 0)
-    const actual = args[marker]
-    const wanted = expected || (marker > 0 ? args[0] : expected)
+    const wanted = expected || args[marker]
     const result = jack(...args)
 
-    // Cook up own exception
     if (!result) {
-      const { message, stack } = Error(ticket)
-      const exception = { actual, message, expected: wanted, operator, stack, toString: () => ticket }
+      const error = Error(ticket)
 
-      throw exception
+      // Cook up own exception
+      Object.assign(error, { actual, expected: wanted, operator })
+
+      throw error
     }
 
     return result
