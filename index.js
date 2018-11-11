@@ -2,58 +2,41 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-// Helps create assertions
-const reassert = (jack = v => v, name, expected, operator = 'is') => {
-  const ticket = name || (jack && jack.name);
-  const length = jack && jack.length;
+// Helps create assertions?
+const reassert = (assert = v => v, expected, operator = 'is') => {
+  const test = (...assertion) => {
+    const result = assert(...assertion);
 
-  const verify = (...args) => {
-    const actual = args[0];
-    const marker = Math.max(jack.length - 1, 0);
-    const wanted = expected || args[marker];
-    const result = jack(...args);
-
-    // Cook up own exception
     if (!result) {
-      const error = Error(ticket);
-
-      Object.assign(error, { actual, expected: wanted, operator });
-
-      throw error
+      // Cook up own exception
+      throw Object.assign(Error(name), { actual: assertion.shift(), expected, operator })
     }
 
     return result
   };
 
-  // Preserve name and arity
-  Object.defineProperties(verify, {
-    name: {
-      value: ticket,
-      // ES2015 upwards
-      configurable: true
-    },
-    length: {
-      value: length,
-      configurable: true
-    }
+  // Preserve name
+  Object.defineProperty(test, 'name', {
+    value: assert && assert.name,
+    configurable: true
   });
 
-  return verify
+  return test
 };
 
 const assert = reassert();
 
-const ok = a => !!a;
-const notOk = a => !a;
+const truthy = a => !!a;
+const falsy = a => !a;
 
-assert.ok = reassert(ok, 'truthy', true, '!!');
-assert.notOk = reassert(notOk, 'falsy', false, '!');
+assert.ok = reassert(truthy, true, '!!');
+assert.notOk = reassert(falsy, false, '!');
 
-const eq = (a, b) => Object.is(a, b);
-const notEq = (a, b) => !eq(a, b);
+const same = (a, b) => Object.is(a, b);
+const different = (a, b) => !same(a, b);
 
-assert.equal = reassert(eq, 'same');
-assert.notEqual = reassert(notEq, 'different');
+assert.equal = reassert(same);
+assert.notEqual = reassert(different);
 
 exports.assert = assert;
 exports.reassert = reassert;
