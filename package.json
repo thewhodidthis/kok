@@ -1,6 +1,6 @@
 {
   "name": "likewise",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Helps compare and assert",
   "main": "index",
   "module": "index.mjs",
