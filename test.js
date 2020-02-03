@@ -1,16 +1,12 @@
 'use strict'
 
-const { ok } = require('tapeless')
+const { equal, ok } = require('assert')
 const { assert } = require('./')
 
-const { equal, notEqual } = assert
+const t1 = assert.equal(2, 2)
+const t2 = assert.notEqual(2, 3)
 
-const t1 = equal(2, 2)
-const t2 = notEqual(2, 3)
-
-ok
-  .describe(equal.name)
-  .test(t1)
-  .describe(notEqual.name, 'will compute')
-  .test(t2)
-  .exit()
+equal(assert.equal.name, 'same')
+ok(t1)
+equal(assert.notEqual.name, 'different')
+ok(t2)
