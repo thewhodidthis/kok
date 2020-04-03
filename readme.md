@@ -1,12 +1,10 @@
-> Browser friendly assertification, adapted from [tapjs/tapsert](https://github.com/tapjs/tapsert)
-
-### Setup
+Browser friendly assertification, adapted from [tapjs/tapsert](https://github.com/tapjs/tapsert),
 ```sh
 # Fetch latest from github
 npm i thewhodidthis/likewise
 ```
 
-### Usage
+In use,
 ```js
 import { assert } from 'likewise'
 
