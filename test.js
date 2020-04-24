@@ -3,12 +3,12 @@
 const { equal, ok } = require('assert')
 const { assert } = require('./')
 
-const t1 = assert.equal(2, 2)
+const equalMaybe = assert.equal(2, 2)
 
 equal(assert.equal.name, 'same')
-ok(t1)
+ok(equalMaybe)
 
-const t2 = assert.notEqual(2, 3)
+const differentHopefully = assert.notEqual(2, 3)
 
 equal(assert.notEqual.name, 'different')
-ok(t2)
+ok(differentHopefully)
