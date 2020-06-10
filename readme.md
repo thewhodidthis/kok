@@ -1,6 +1,6 @@
 ## about
 
-Produces exceptions for failing assertions. Includes ready made assertions for truthiness and equality. Combines with [tapeling](https://github.com/thewhodidthis/tapeling) in [tapeless](https://github.com/thewhodidthis/tapeless) for [TAP](https://testanything.org) formatted output browser side.
+Produces exceptions for failing assertions. Includes ready made assertions for truthiness and equality. Combines with [tapeling](https://npm.im/tapeling) in [tapeless](https://npm.im/tapeless) for [TAP](https://testanything.org) formatted output browser side.
 
 ## setup
 
