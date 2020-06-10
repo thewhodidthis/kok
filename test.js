@@ -3,7 +3,7 @@
 const { equal, ok } = require('assert')
 const { assert } = require('./')
 
-// Passing courtesy of `Object.is`
+// Passing courtesy of `Object.is()`
 assert.equal(null, null)
 assert.notEqual(null, 0)
 
