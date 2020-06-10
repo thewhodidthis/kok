@@ -23,8 +23,9 @@ function reassert(assert = identity, expectedMaybe, operator = 'is') {
 
     // Fill in a few details cooking up own exception if the result is falsy
     const [actual, expected = expectedMaybe] = assertion;
+    const error = Error(name);
 
-    throw Object.assign(Error(name), { actual, expected, operator })
+    throw Object.assign(error, { actual, expected, operator })
   };
 
   // Preserve name of function being wrapped
