@@ -3,6 +3,10 @@
 const { equal, ok } = require('assert')
 const { assert } = require('./')
 
+// Passing courtesy of `Object.is`
+assert.equal(null, null)
+assert.notEqual(null, 0)
+
 const equalMaybe = assert.equal(2, 2)
 
 equal(assert.equal.name, 'same')
