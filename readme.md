@@ -4,7 +4,7 @@ Produces exceptions for failing assertions. Includes ready made assertions for t
 
 ## setup
 
-Fetch the [latest stable version](https://www.npmjs.com/package/likewise) from the _npm_ registry:
+Download the [latest stable version](https://npm.im/likewise) from the _npm_ registry:
 
 ```sh
 # Add to 'package.json' development dependencies
