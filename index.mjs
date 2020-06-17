@@ -1,5 +1,5 @@
 // # Likewise
-// Helps create assertions; provides a few of them to begin with
+// Helps create assertions with a few basic ones included
 
 // Creates an assertion by wrapping a given function, "expected" value, and "operator" key
 // to produce a custom `Error` if the original function fails when called
