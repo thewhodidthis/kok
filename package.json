@@ -34,8 +34,8 @@
     "@thewhodidthis/eslint-config": "^0.1.6",
     "eslint": "^7.2.0",
     "kpow": "^0.1.8",
-    "rollup": "^2.16.1",
-    "rollup-config-x": "^2.0.1"
+    "rollup": "^2.17.0",
+    "rollup-config-x": "^2.0.3"
   },
   "engines": {
     "node": ">=6.11.0",
