@@ -21,7 +21,7 @@
     "import": "./index.js",
     "require": "./index.cjs"
   },
-  "main": "./index.cjs",
+  "main": "index",
   "scripts": {
     "preexample": "eslint example.js",
     "example": "rollup -c node:x -f iife example.js | kpow",
