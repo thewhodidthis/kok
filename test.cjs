@@ -1,7 +1,7 @@
 'use strict'
 
 const { equal, ok } = require('assert')
-const { assert } = require('./')
+const { assert } = require('./index.cjs')
 
 // Passing courtesy of `Object.is()`
 assert.equal(null, null)
