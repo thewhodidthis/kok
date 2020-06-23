@@ -33,6 +33,7 @@ function reassert(assert = identity, expectedMaybe, operator = 'is') {
   return test
 }
 
+// Placeholder input
 function identity(v) {
   return v
 }
