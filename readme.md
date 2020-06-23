@@ -22,7 +22,7 @@ import { reassert } from 'likewise'
 const truthy = v => !!v
 const falsy = v => !v
 
-// Wrap with `reassert()` to throw an `Error` with 
+// Wrap with `reassert()` to throw an `Error` with
 // the 'expected' value and an 'operator' key on failure,
 // the 2nd and 3rd arguments respectively
 const ok = reassert(truthy, true, '!!')
