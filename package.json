@@ -17,32 +17,27 @@
   "license": "ISC",
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
   "type": "module",
-  "exports": {
-    "import": "./index.js",
-    "require": "./index.cjs"
-  },
-  "main": "index",
+  "exports": "./main.js",
+  "main": "./main.js",
   "scripts": {
     "preexample": "eslint example.js",
-    "example": "rollup -c node:x -f iife example.js | kpow",
-    "prestart": "eslint index.js",
-    "start": "rollup -f cjs -o index.cjs index.js",
-    "pretest": "eslint test.cjs",
-    "test": "node test.cjs"
+    "example": "rollup example.js | kpow",
+    "prestart": "eslint main.js",
+    "start": "npm run example",
+    "pretest": "eslint test.js",
+    "test": "node test.js"
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^0.1.7",
-    "eslint": "^7.3.1",
-    "kpow": "^0.1.8",
-    "rollup": "^2.18.0",
-    "rollup-config-x": "^3.0.0"
+    "@thewhodidthis/eslint-config": "^1.0.2",
+    "eslint": "^7.27.0",
+    "kpow": "^1.0.1",
+    "rollup": "^2.49.0"
   },
   "engines": {
-    "node": ">=12.18.1",
-    "npm": ">=6.14.5"
+    "node": ">=14.7.0",
+    "npm": ">=6.14.13"
   }
 }

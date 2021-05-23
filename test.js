@@ -1,7 +1,5 @@
-'use strict'
-
-const { equal, ok } = require('assert')
-const { assert } = require('./index.cjs')
+import { equal, ok } from 'assert'
+import { assert } from './main.js'
 
 // Passing courtesy of `Object.is()`
 assert.equal(null, null)
