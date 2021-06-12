@@ -3,7 +3,7 @@
 
 // Creates an assertion by wrapping a given function, "expected" value, and "operator" key
 // to produce a custom `Error` if the original function fails when called
-function reassert(assert = identity, expectedMaybe, operator = 'is') {
+function reassert(assert = identity, expectedMaybe, operator = "is") {
   // Attempt to extract a name for the would be assertion; could be using the
   // optional chaining operator in ES2020, eg. `assert?.name`
   const name = assert && assert.name
@@ -25,9 +25,9 @@ function reassert(assert = identity, expectedMaybe, operator = 'is') {
   }
 
   // Preserve name of function being wrapped
-  Object.defineProperty(test, 'name', {
+  Object.defineProperty(test, "name", {
     value: name,
-    configurable: true
+    configurable: true,
   })
 
   return test
@@ -43,11 +43,11 @@ function identity(v) {
 const assert = reassert()
 
 // Add named checks for truthiness
-const truthy = a => !!a
-const falsy = a => !a
+const truthy = (a) => !!a
+const falsy = (a) => !a
 
-assert.ok = reassert(truthy, true, '!!')
-assert.notOk = reassert(falsy, false, '!')
+assert.ok = reassert(truthy, true, "!!")
+assert.notOk = reassert(falsy, false, "!")
 
 // Same for equality
 const same = (a, b) => Object.is(a, b)
