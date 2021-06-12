@@ -20,21 +20,8 @@
   "exports": "./main.js",
   "main": "./main.js",
   "scripts": {
-    "preexample": "eslint example.js",
-    "example": "rollup example.js | kpow",
-    "prestart": "eslint main.js",
-    "start": "npm run example",
-    "pretest": "eslint test.js",
+    "start": "node example.js",
     "test": "node test.js"
-  },
-  "eslintConfig": {
-    "extends": "@thewhodidthis"
-  },
-  "devDependencies": {
-    "@thewhodidthis/eslint-config": "^1.0.2",
-    "eslint": "^7.27.0",
-    "kpow": "^1.0.1",
-    "rollup": "^2.49.0"
   },
   "engines": {
     "node": ">=14.17.0",
