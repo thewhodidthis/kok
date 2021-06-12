@@ -16,7 +16,7 @@ Source from an import map to use with Deno or in-browser directly:
 ```json
 {
   "imports": {
-    "cutaway": "https://cdn.jsdelivr.net/npm/likewise@latest/main.js"
+    "likewise": "https://cdn.jsdelivr.net/npm/likewise@latest/main.js"
   }
 }
 ```
