@@ -1,7 +1,5 @@
-import { assert } from './main.js'
-
-const { equal, notEqual } = assert
+import { assert } from "likewise"
 
 // Clean run hopefully
-console.assert(equal(2, 2), 'equal')
-console.assert(notEqual(2, 3), 'not equal')
+console.assert(assert.equal(2, 2), "equal")
+console.assert(assert.notEqual(2, 3), "not equal")
