@@ -43,7 +43,7 @@ console.assert(ok(true), "ok")
 console.assert(notOk(0), "not ok")
 ```
 
-Additionally, if only checks for truthiness and equality are needed, `ok()` and `equal()` plus counterparts are attached to `assert()` already wrapped. For example,
+Additionally, `ok()` and `equal()` plus counterparts are attached to `assert()` already wrapped. For example,
 
 ```js
 import { assert } from "likewise"
