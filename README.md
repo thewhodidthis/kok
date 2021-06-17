@@ -7,7 +7,7 @@ Produces exceptions for failing assertions. Includes ready-made checks for truth
 Download from the _npm_ registry:
 
 ```sh
-# Add to 'package.json' development dependencies
+# Add to package.json
 npm install likewise --save-dev
 ```
 
