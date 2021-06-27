@@ -1,5 +1,5 @@
 import { equal, ok } from "assert"
-import { assert } from "likewise"
+import { assert } from "./main.js"
 
 // Passing courtesy of `Object.is()`
 assert.equal(null, null)

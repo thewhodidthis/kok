@@ -1,4 +1,4 @@
-import { assert } from "likewise"
+import { assert } from "./main.js"
 
 // Clean run hopefully
 console.assert(assert.equal(2, 2), "equal")
