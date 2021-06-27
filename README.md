@@ -54,7 +54,7 @@ const { ok, notOk, equal, notEqual } = assert
 console.assert(ok(true), "ok")
 console.assert(notOk(0), "not ok")
 
-// Internally rely on `Object.is()`
+// Based on `Object.is()`
 console.assert(equal(null, null), "equal")
 console.assert(notEqual(null, 0), "not equal")
 ```
